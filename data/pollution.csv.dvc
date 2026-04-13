@@ -1,0 +1,5 @@
+outs:
+- md5: c50993a329efa65dc08a36384576756e
+  size: 2010492
+  hash: md5
+  path: pollution.csv
