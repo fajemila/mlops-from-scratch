@@ -1,0 +1,37 @@
+name: MLOps CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    # 1. Install our fast package manager
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+    
+    - name: Set up Python
+      run: uv python install 3.11
+      
+    - name: Install dependencies
+      run: uv pip install --system -r pyproject.toml
+      
+    # 2. Run our unit tests
+    - name: Run Pytest
+      run: pytest tests/
+
+  build-docker:
+    needs: test # This ensures Docker only builds if tests pass
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    # 3. Test the container build
+    - name: Build Docker Image
+      run: docker build -t aqi-api:test .

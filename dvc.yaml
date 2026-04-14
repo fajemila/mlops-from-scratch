@@ -1,0 +1,16 @@
+stages:
+  preprocess:
+    cmd: python src/data/preprocess.py
+    deps:
+    - data/pollution.csv
+    - src/data/preprocess.py
+    outs:
+    - data/processed
+  train:
+    cmd: python src/models/train.py
+    deps:
+    - data/processed
+    - src/models/train.py
+    params:
+    - train.max_depth
+    - train.n_estimators

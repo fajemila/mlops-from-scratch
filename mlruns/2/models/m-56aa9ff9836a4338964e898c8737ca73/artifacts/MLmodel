@@ -1,0 +1,23 @@
+artifact_path: /Users/MAC/Documents/research/mlops-test/mlops-from-scratch/mlruns/2/models/m-56aa9ff9836a4338964e898c8737ca73/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.11
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.11.1
+model_id: m-56aa9ff9836a4338964e898c8737ca73
+model_size_bytes: 5800271
+model_uuid: m-56aa9ff9836a4338964e898c8737ca73
+prompts: null
+run_id: a65dd67c660d47baae955c5cce871453
+utc_time_created: '2026-04-13 14:28:00.277932'
