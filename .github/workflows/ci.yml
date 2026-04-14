@@ -20,11 +20,13 @@ jobs:
       run: uv python install 3.11
       
     - name: Install dependencies
-      run: uv pip install --system -r pyproject.toml
+      run: |
+        uv venv
+        uv pip install -r pyproject.toml
       
     # 2. Run our unit tests
     - name: Run Pytest
-      run: pytest tests/
+      run: uv run pytest tests/
 
   build-docker:
     needs: test # This ensures Docker only builds if tests pass
